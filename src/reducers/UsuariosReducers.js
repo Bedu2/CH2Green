@@ -6,7 +6,10 @@ import {
 	 EDITAR_APELLIDOPATERNO,
 	 EDITAR_APELLIDOMATERNO,
 	 EDITAR_EDAD,
-	 REINICIAR
+	 REINICIAR, 
+	 PRELOADER,
+	 TRUE,
+	 FALSE
 }from '../types/UsuariosTypes';
 
 const INITIAL_STATE = {
@@ -16,13 +19,15 @@ const INITIAL_STATE = {
 	nombre: '',
 	paterno:'',
 	materno:'',
-	edad:''
+	edad:'',
+	direccion:false,
 };
 
 export default (state = INITIAL_STATE, action) =>
 {
 	switch(action.type){
-		case TRAER: return{ ...state, cargando:true, error: ''}; 
+		case TRAER: return{ ...state, cargando:true, error: ''};
+		case PRELOADER: return{...state, cargando:false} 
 		case EXITO: return{ ...state, usuarios: action.payload, cargando: false, error:'' };
 		case FALLO: return{ ...state, error: action.payload, cargando:false};
 		case REINICIAR: return{...state, cargando: false, error: '', nombre: '', paterno: '', materno:'',edad:''};
@@ -30,6 +35,8 @@ export default (state = INITIAL_STATE, action) =>
 		case EDITAR_APELLIDOPATERNO:return{...state, 'paterno': action.payload} ; 
 		case EDITAR_APELLIDOMATERNO:return{...state, 'materno': action.payload};
 		case EDITAR_EDAD: return{...state, edad:action.payload};
+		case TRUE: return{...state, direccion:true}
+		case FALSE: return{...state, direccion:false}
 		default: return state;
 	}
 }

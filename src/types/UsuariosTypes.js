@@ -6,3 +6,6 @@ export const EDITAR_APELLIDOPATERNO = 'usuarios_editar_apellidopaterno';
 export const EDITAR_APELLIDOMATERNO ='usuarios_editar_apellidomaterno';
 export const EDITAR_EDAD = 'usuarios_editar_edad';
 export const REINICIAR ='usuarios_reiniciar';
+export const PRELOADER ='preloader';
+export const TRUE = 'true';
+export const FALSE = 'false';

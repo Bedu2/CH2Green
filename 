@@ -1,0 +1,24 @@
+[33mcommit f711cba0b2721ea3e37518deedf91069b3cd420a[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;32mMike[m[33m)[m
+Merge: d68234f 0d7e1a9
+Author: MGMike0 <ingmiguelmorangomez@gmail.com>
+Date:   Wed Oct 3 18:18:59 2018 -0500
+
+    Merge remote-tracking branch 'origin/Miguel'
+
+[33mcommit d68234f797b30208178a9acd6fcc3bf589ab23fe[m
+Author: MGMike0 <ingmiguelmorangomez@gmail.com>
+Date:   Wed Oct 3 17:13:37 2018 -0500
+
+    pasando todo a mi branch
+
+[33mcommit f3120559195d047b88c57ec5146cab637e0f741d[m
+Author: MGMike0 <ingmiguelmorangomez@gmail.com>
+Date:   Wed Oct 3 16:48:27 2018 -0500
+
+    Pues lo que llevo, agregar ya esta editar a la mitad
+
+[33mcommit 0d7e1a974859f8bc724ac9d81e2e4a7e1c69f6f4[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/develop[m[33m, [m[1;31morigin/Miguel[m[33m, [m[1;31morigin/Joshua[m[33m, [m[1;31mMiguel/master[m[33m, [m[1;31mMiguel/develop[m[33m, [m[1;31mMiguel/Miguel[m[33m, [m[1;31mMiguel/Joshua[m[33m)[m
+Author: RodolfoSaldivar <rodolfo.saldivar@udem.edu>
+Date:   Tue Sep 25 18:06:57 2018 -0500
+
+    Initial commit

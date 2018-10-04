@@ -8,6 +8,7 @@ import * as UsuariosActions from '../../actions/UsuariosActions';
 class Usuarios extends Component {
 
 	componentDidMount() {
+		this.props.Direccion(true);
 		this.props.TraerUsuarios();
 	}
 

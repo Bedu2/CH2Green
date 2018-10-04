@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import {Redirect} from 'react-router-dom'
 import {Row, Input, Button, Preloader} from 'react-materialize';
 import * as UsuariosActions from '../../actions/UsuariosActions';
 
@@ -14,14 +15,41 @@ class Editar extends Component {
 
 	componentDidMount = async () => {
 		await this.props.TraerUno(this.props.match.params.id);
+
 	};
 
+	actualizar = () =>{
+		if (this.validarCampos()) {
+			const{
+				nombre,
+				paterno,
+				materno, 
+				edad,
+			}=this.props;
+			const apellidos= {paterno , materno}
+			const valores = {nombre, apellidos, edad};
+			let id =this.props.match.params.id;
+			this.props.actualizarUsuaro(id,	 valores);
+			this.props.Direccion(this.props.direccion);
+		}
+		else
+			window.Materialize.toast('Validar los campos.', 2 * 1000, 'red');
+		
+	}
+
 	handleChange = (event, type) => this.props.cambiarInput(type, event.target.value);
+
+	validarCampos = () =>{
+		if(this.props.nombre=== "" || this.props.paterno=== ""|| this.props.materno=== ""|| this.props.edad=== "")
+			return false;
+		else
+			return true;
+	};
 
 	render() {
 		return (
 			<div>
-					
+					{this.props.direccion? <Redirect to='/'/>: ''}	
 				<div>
 					<Row>
 						<h1 className="center">Editar Usuario </h1>
@@ -30,6 +58,7 @@ class Editar extends Component {
 					      value={this.props.nombre}
 					      onChange={(event) => this.handleChange(event, EDITAR_NOMBRE)}
 					    />
+					    
 					    <Input placeholder="Apellido Paterno" s={6}
 					     value={this.props.paterno} name="Paterno"
 					      onChange={(event) => this.handleChange(event, EDITAR_APELLIDOPATERNO)}
@@ -51,12 +80,14 @@ class Editar extends Component {
 								<Button
 									style={{width: '10%'}}
 									waves='light'
-									// onClick={enviar}
-									// disabled='true'  <Preloader active='false' size='big'/>
-									>
+									color={'green'}
+									onClick={this.actualizar}
+								>
 									Enviar
 								</Button>
-						<br /><br />
+	
+						<br/><br />
+							<Preloader active={this.props.cargando} size='big'/>							
 							 
 						</div>
 					</div>

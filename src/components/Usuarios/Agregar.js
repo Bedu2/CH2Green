@@ -12,20 +12,32 @@ import {
 
 const Agregar = (props) => {
 	
+	const validarCampos = () =>{
+		if(props.nombre === "" || props.paterno === ""|| props.materno === ""|| props.edad === "")
+			return false;
+		else
+			return true;
+	};
+
+
 	const handleChange = (event, type) => props.cambiarInput(type, event.target.value);
 	
 	const enviar = async () =>{
-		const{
-			nombre,
-			paterno,
-			materno, 
-			edad,
-		}=props;
-		const apellidos= {paterno , materno}
-	const valores = {nombre, apellidos, edad};
-	console.log("valores", valores);
-	
-	props.EnviarUsuario(valores, props.usuarios)
+		if (validarCampos()) {
+
+			const{
+				nombre,
+				paterno,
+				materno, 
+				edad,
+			}=props;
+			const apellidos= {paterno , materno}
+			const valores = {nombre, apellidos, edad};
+			props.EnviarUsuario(valores, props.usuarios)
+		}
+		else
+			window.Materialize.toast('Validar los campos.', 2 * 1000, 'red');
+
 };
 
 	return(
