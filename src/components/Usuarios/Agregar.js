@@ -13,7 +13,7 @@ import {
 const Agregar = (props) => {
 	
 	const validarCampos = () =>{
-		if(props.nombre === "" || props.paterno === ""|| props.materno === ""|| props.edad === "")
+		if(props.nombre === "" || props.nombre === null|| props.paterno === ""|| props.materno === ""|| props.edad === "")
 			return false;
 		else
 			return true;

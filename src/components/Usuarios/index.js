@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {Link} from 'react-router-dom';
-import {Table, Icon} from 'react-materialize';
+import {Table, Icon, Row, Button} from 'react-materialize';
 import * as UsuariosActions from '../../actions/UsuariosActions';
 
 
@@ -26,13 +26,13 @@ class Usuarios extends Component {
 
 						<tbody>
 							{
-								this.props.usuarios.map((elem, index) =>(
+									this.props.usuarios.map((elem, index) =>(
 									<tr key={elem._id}>
 										<td>{elem.nombre}</td>
 										<td>{elem.apellidos.paterno}</td>
 										<td>{elem.apellidos.materno}</td>
 										<td>{elem.edad}</td>
-										<td><Link to={`Usuarios/${elem._id}`} ><Icon> face </Icon></Link> 
+										<td><Link to={`/Dependientes/${elem._id}/${elem.nombre}/${elem.apellidos.paterno}/${elem.apellidos.materno}`} ><Icon> face </Icon></Link> 
 										<br/><Link to={`/EditarUsuario/${elem._id}`} ><Icon> create </Icon></Link> 
 										<br/>
 										<Link to={`/EliminarUsuario/${elem._id}`} ><Icon> delete </Icon></Link> </td>
@@ -49,6 +49,15 @@ class Usuarios extends Component {
 	render() {
 		return (
 			<div>
+					<div className="row">
+						<h4 className="col s2">
+							Usuarios
+						</h4>
+							<Link to='/AgregarUsuario' >
+							<Button floating large className='red' waves='light' icon='add'/>
+							</Link>
+												
+					</div>
 					{this.desplegarUsuarios()}
 			</div>
 		);

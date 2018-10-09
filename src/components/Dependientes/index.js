@@ -1,58 +1,64 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
- import {Link} from 'react-router-dom';
- import {Table, Icon} from 'react-materialize';
- import * as UsuariosActions from '../../actions/UsuariosActions';
+import {Link} from 'react-router-dom';
+import {Table, Icon, Button} from 'react-materialize';
+import * as UsuariosActions from '../../actions/UsuariosActions';
 
 
 class Dependientes extends Component {
 
 	componentDidMount() {
-		this.props.Direccion(true);
-		this.props.TraerUno();
+		this.props.TraerDependientes(this.props.match.params.id);
 	}
 
 	desplegarUsuarios = () => (
-		<div className='dependientes'>
-		
-			<Table hoverable={true}>
+		<Table hoverable={true}>
 						<thead>
 							<tr>
 								<th>Nombre</th>
-								<th>Apellido P</th>
-								<th>Apellido M</th>
-								<th>Edad</th>
-								<th>Opciones</th>
+								<th>Edad P</th>
+								<th>Dependencia M</th>
 							</tr>
 						</thead>
 
-						<tbody>
-							{
-								this.props.usuarios.map((elem, index) =>(
-									<tr key={elem._id}>
-										<td>{elem.nombre}</td>
-										<td>{elem.apellidos.paterno}</td>
-										<td>{elem.apellidos.materno}</td>
-										<td>{elem.edad}</td>
-										<td><Link to={`Usuarios/${elem._id}`} ><Icon> face </Icon></Link> 
-										<br/><Link to={`/EditarUsuario/${elem._id}`} ><Icon> create </Icon></Link> 
-										<br/>
-										<Link to={`/EliminarUsuario/${elem._id}`} ><Icon> delete </Icon></Link> </td>
-
-									</tr>
-									))
-							}
-							
+						<tbody>{
+							this.props.dependientes.map((elemento, index) => (	
+								<tr key={elemento._id}>
+									<td>{elemento.nombre_completo}</td>
+									<td>{elemento.edad}</td>
+									<td>{elemento.dependencia}</td>
+									<td>
+										{}
+										<Link to={`/EditarDependiente/${elemento._usuario}/${elemento._id}`}><Icon> create </Icon></Link> <br/>
+										<Icon> delete </Icon> <br/>
+									</td>
+								</tr>
+								))
+						}							
 						</tbody>
 				
 				</Table>
-		</div>
 	);
 
 	render() {
 		return (
 			<div>
+					<div className="row">
+						<h4 className="col s4">
+						{`
+						${this.props.match.params.nombre}					
+						${this.props.match.params.apellidop}					
+						${this.props.match.params.apellidom}					
+						`}
+					</h4>
+							<Link to={`/AgregarDependiente/${this.props.match.params.id}`} >
+								<Button floating large className='red' waves='light' icon='add'/>
+							</Link>
+												
+					</div>
+					
 					{this.desplegarUsuarios()}
+					
 			</div>
 		);
 	}
@@ -64,4 +70,4 @@ const mapStateToProps =({ UsuariosReducers }) =>{
 	return UsuariosReducers;
 }
 
- export default connect(mapStateToProps, UsuariosActions)(Dependientes);
+export default connect(mapStateToProps, UsuariosActions)(Dependientes);
