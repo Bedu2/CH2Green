@@ -10,7 +10,7 @@ import {
 	 DEPENDENCIAEDITAR_EDAD
 }from '../../types/UsuariosTypes';
 
-class EditarDependiete extends Component {
+class EditarDependiente extends Component {
 
 	componentDidMount = async () => {
 	await this.props.TraerDependiente(this.props.match.params.iddep);
@@ -33,7 +33,6 @@ class EditarDependiete extends Component {
 							 _usuario: this.props.match.params.idusu};	
 			
 			this.props.actualizarDependiente(id, valores, this.props.match.params.idusu)
-			console.log(dependienteedad)
 		}
 		else
 			window.Materialize.toast('Validar los campos.', 2 * 1000, 'red');
@@ -42,12 +41,11 @@ class EditarDependiete extends Component {
 	handleChange = (event, type) => this.props.cambiarInput(type, event.target.value);
 
 	validarCampos = () =>{
-		if(this.props.dependientenombre === "" || this.props.dependienteedad=== ""|| this.props.dependientedependiente=== "")
+		if(this.props.dependientenombre === "" || this.props.dependienteedad === ""|| this.props.dependientedependiente === "")
 			return false;
 		else
 			return true;
 	};
-
 	render() {
 		return (
 			<div>
@@ -60,10 +58,10 @@ class EditarDependiete extends Component {
 				     value={this.props.dependientenombre} name="dependientenombre" onChange={(event) => this.handleChange(event, DEPENDENCIAEDITAR_NOMBRE)}
 				    />
 				    <Input placeholder="Dependiente" s={6} 
-				     value={this.props.dependienteedad} name="dependientedependiente" onChange={(event) => this.handleChange(event, DEPENDENCIAEDITAR_EDAD)}
+				     value={this.props.dependientedependiente} name="dependientedependiente" onChange={(event) => this.handleChange(event, DEPENDENCIAEDITAR_DEPENDIENTE)}
 				    />
 				    <Input placeholder="Edad" 
-				     value={this.props.dependientedependiente} name="dependienteedad" onChange={(event) => this.handleChange(event, DEPENDENCIAEDITAR_DEPENDIENTE)}
+				     value={this.props.dependienteedad} name="dependienteedad" onChange={(event) => this.handleChange(event, DEPENDENCIAEDITAR_EDAD)}
 				    />
 				
 				</Row>
@@ -95,4 +93,4 @@ const mapStateToProps =({ UsuariosReducers }) =>{
 	return UsuariosReducers;
 }
 
-export default connect(mapStateToProps, UsuariosActions)(EditarDependiete);
+export default connect(mapStateToProps, UsuariosActions)(EditarDependiente);

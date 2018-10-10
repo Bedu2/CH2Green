@@ -51,13 +51,13 @@ export const cambiarInput = (type, valor) => async (dispatch) => {
 };
 export const EnviarDependiente = (valores, dependientes) => async(dispatch) =>{
 	dispatch ({type: TRAER})
-
+	console.log("Valores Dependiente: ", valores);
 	try{
 		const response = await axios.post('https://g2-ch2.herokuapp.com/api/dependientes/green', valores);
 		
 
 		dependientes.unshift(response.data);
-
+		console.log("Dispatch Dependientes: ", dependientes);
 		dispatch({ type: dEXITO, payload: dependientes });
 
 		window.Materialize.toast('Dpendiente guardado exitosamente.', 5 * 1000);
@@ -70,6 +70,7 @@ export const EnviarDependiente = (valores, dependientes) => async(dispatch) =>{
 
 export const EnviarUsuario = (valores, usuarios) => async (dispatch) => {
 	dispatch({ type: TRAER });
+	console.log("Valores usuario: ", valores);
 
 	try {
 		const response = await axios.post('https://g2-ch2.herokuapp.com/api/usuarios/green', valores);
@@ -138,6 +139,7 @@ export const actualizarUsuaro=(id, arreglo) => async (dispatch) =>{
 
 export const actualizarDependiente=(id, arreglo, usuario) => async (dispatch) =>{
 	dispatch({ type: TRAER });
+	console.log("Dispatch actualizarDependiente: ", id, arreglo, usuario);
 try {
 		const response = await axios.post(`https://g2-ch2.herokuapp.com/api/dependientes/green/${id}`, arreglo);
 		window.Materialize.toast('Usuario editado exitosamente.', 5 * 1000);
@@ -169,3 +171,18 @@ export const eliminarUsuario=(id) => async (dispatch) =>{
 	}
 };
 
+export const eliminarDependiente=(id) => async (dispatch) =>{
+	dispatch({ type: TRAER });
+	try {
+		const response = await axios.delete(`https://g2-ch2.herokuapp.com/api/dependientes/green/${id}`);
+		window.Materialize.toast('Dependiente eliminado exitosamente.', 5 * 1000);
+		dispatch({ type: REINICIAR });
+		const respuesta = await axios.get('https://g2-ch2.herokuapp.com/api/usuarios/green');
+		respuesta.data.reverse();
+		dispatch({type:EXITO , payload: respuesta.data});
+	}
+	catch(error) {
+		dispatch({ type: FALLO, payload: error.message });
+		window.Materialize.toast('Intente más tarde.', 5 * 1000, 'red');
+	}
+};
