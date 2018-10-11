@@ -184,19 +184,3 @@ export const eliminarDependiente=(id) => async (dispatch) =>{
 		window.Materialize.toast('Intente más tarde.', 5 * 1000, 'red');
 	}
 };
-
-export const eliminarDependiente=(id) => async (dispatch) =>{
-	dispatch({ type: TRAER });
-	try {
-		const response = await axios.delete(`https://g2-ch2.herokuapp.com/api/dependientes/green/${id}`);
-		window.Materialize.toast('Dependiente eliminado exitosamente.', 5 * 1000);
-		dispatch({ type: REINICIAR });
-		const respuesta = await axios.get('https://g2-ch2.herokuapp.com/api/usuarios/green');
-		respuesta.data.reverse();
-		dispatch({type:EXITO , payload: respuesta.data});
-	}
-	catch(error) {
-		dispatch({ type: FALLO, payload: error.message });
-		window.Materialize.toast('Intente más tarde.', 5 * 1000, 'red');
-	}
-};

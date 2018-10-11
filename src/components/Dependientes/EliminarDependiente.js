@@ -6,12 +6,10 @@ import * as UsuariosActions from '../../actions/UsuariosActions';
 class EliminarDependiente extends Component {
 
 	componentDidMount = async () => {
-<<<<<<< HEAD
-		await this.props.TraerUno(this.props.match.params.id);
-=======
-		await this.props.TraerDependiente(this.props.match.params.id);
->>>>>>> a2f9bb37a452445b93cb2c199376e974bb3250d2
-		this.puestodo()
+
+		// await this.props.TraerUno(this.props.match.params.id);
+		// await this.props.TraerDependiente(this.props.match.params.id);
+	 this.puestodo()
 	};
 
 	puestodo=() =>{
@@ -20,18 +18,13 @@ class EliminarDependiente extends Component {
 			this.props.eliminarDependiente(this.props.match.params.id)
 		}
 		this.props.Direccion(this.props.direccion);
-
 		return texto;
 	}
 
 	render() {
 		return(	
 		<div>
-<<<<<<< HEAD
 			{this.props.direccion ? <Redirect to='/'/>: ''}	
-=======
-			{this.props.direccion? <Redirect to='/'/>: ''}	
->>>>>>> a2f9bb37a452445b93cb2c199376e974bb3250d2
 		</div>
 		)
 

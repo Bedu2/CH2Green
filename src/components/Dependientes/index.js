@@ -30,13 +30,11 @@ class Dependientes extends Component {
 									<td>
 										
 										<Link to={`/EditarDependiente/${elemento._usuario}/${elemento._id}`}><Icon> create </Icon></Link> <br/>
-<<<<<<< HEAD
 											<Link to={`/EliminarDependiente/${elemento._id}`}>
 												<Icon> delete </Icon> <br/>
 											</Link>
-=======
 										<Link to={`/EliminarDependiente/${elemento._id}`}><Icon> delete </Icon></Link> <br/>
->>>>>>> a2f9bb37a452445b93cb2c199376e974bb3250d2
+
 									</td>
 								</tr>
 								))
