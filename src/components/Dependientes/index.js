@@ -28,9 +28,11 @@ class Dependientes extends Component {
 									<td>{elemento.edad}</td>
 									<td>{elemento.dependencia}</td>
 									<td>
-										{}
+										
 										<Link to={`/EditarDependiente/${elemento._usuario}/${elemento._id}`}><Icon> create </Icon></Link> <br/>
-										<Icon> delete </Icon> <br/>
+											<Link to={`/EliminarDependiente/${elemento._id}`}>
+												<Icon> delete </Icon> <br/>
+											</Link>
 									</td>
 								</tr>
 								))
@@ -43,7 +45,7 @@ class Dependientes extends Component {
 	render() {
 		return (
 			<div>
-					<div className="row">
+					<div className="row titulo">
 						<h4 className="col s4">
 						{`
 						${this.props.match.params.nombre}					
@@ -52,7 +54,7 @@ class Dependientes extends Component {
 						`}
 					</h4>
 							<Link to={`/AgregarDependiente/${this.props.match.params.id}`} >
-								<Button floating large className='red' waves='light' icon='add'/>
+								<Button floating large className='red' waves='light' icon='add' className="light-green accent-3"/>
 							</Link>
 												
 					</div>

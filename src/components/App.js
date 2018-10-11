@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import '../App.css';
+import '../index.css';
 import Header from './Header'
 import {Route, BrowserRouter} from 'react-router-dom';
 import Usuarios from './Usuarios';
@@ -9,7 +10,7 @@ import Eliminar from './Usuarios/Eliminar';
 import Dependientes from './Dependientes';
 import AgregarDependiente from './Dependientes/AgregarDependiente';
 import EditarDependiente from './Dependientes/EditarDependiente'
-
+import EliminarDependiente from './Dependientes/EliminarDependiente'
 class App extends Component {
   render() {
     return (
@@ -27,6 +28,7 @@ class App extends Component {
                  <Route exact path ='/Dependientes/:id/:nombre/:apellidop/:apellidom' component={Dependientes}/>
                  <Route exact path ='/AgregarDependiente/:id' component={AgregarDependiente}/>
                  <Route exact path = '/EditarDependiente/:idusu/:iddep' component={EditarDependiente}/>
+                 <Route exact path = '/EliminarDependiente/:id' component={EliminarDependiente}/>
 	        	</div>
         		
         	</BrowserRouter>

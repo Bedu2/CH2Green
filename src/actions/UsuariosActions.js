@@ -49,13 +49,13 @@ export const TraerUsuarios = () => async (dispatch)=>{
 export const cambiarInput = (type, valor) => async (dispatch) => {
 	dispatch({ type, payload: valor });
 };
+
 export const EnviarDependiente = (valores, dependientes) => async(dispatch) =>{
 	dispatch ({type: TRAER})
 
 	try{
 		const response = await axios.post('https://g2-ch2.herokuapp.com/api/dependientes/green', valores);
 		
-
 		dependientes.unshift(response.data);
 
 		dispatch({ type: dEXITO, payload: dependientes });
@@ -157,6 +157,20 @@ export const eliminarUsuario=(id) => async (dispatch) =>{
 	dispatch({ type: TRAER });
 	try {
 		const response = await axios.delete(`https://g2-ch2.herokuapp.com/api/usuarios/green/${id}`);
+		console.log("response", response);
+		
+		window.Materialize.toast('Usuario eliminado exitosamente.', 5 * 1000);
+		dispatch({ type: REINICIAR });
+	}
+	catch(error) {
+		dispatch({ type: FALLO, payload: error.message });
+		window.Materialize.toast('Intente más tarde.', 5 * 1000, 'red');
+	}
+};
+export const eliminarDependiente=(id) => async (dispatch) =>{
+	dispatch({ type: TRAER });
+	try {
+		const response = await axios.delete(`https://g2-ch2.herokuapp.com/api/dependientes/green/${id}`);
 		window.Materialize.toast('Usuario eliminado exitosamente.', 5 * 1000);
 		dispatch({ type: REINICIAR });
 		const respuesta = await axios.get('https://g2-ch2.herokuapp.com/api/usuarios/green');

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import {Link} from 'react-router-dom';
 import {Table, Icon, Row, Button} from 'react-materialize';
 import * as UsuariosActions from '../../actions/UsuariosActions';
-
+import '../../index.css'
 
 class Usuarios extends Component {
 
@@ -20,7 +20,7 @@ class Usuarios extends Component {
 								<th>Apellido P</th>
 								<th>Apellido M</th>
 								<th>Edad</th>
-								<th>Opciones</th>
+								<th className="center">Opciones</th>
 							</tr>
 						</thead>
 
@@ -32,10 +32,14 @@ class Usuarios extends Component {
 										<td>{elem.apellidos.paterno}</td>
 										<td>{elem.apellidos.materno}</td>
 										<td>{elem.edad}</td>
-										<td><Link to={`/Dependientes/${elem._id}/${elem.nombre}/${elem.apellidos.paterno}/${elem.apellidos.materno}`} ><Icon> face </Icon></Link> 
-										<br/><Link to={`/EditarUsuario/${elem._id}`} ><Icon> create </Icon></Link> 
-										<br/>
-										<Link to={`/EliminarUsuario/${elem._id}`} ><Icon> delete </Icon></Link> </td>
+										<td>
+											<div className="center">
+												<Link to={`/Dependientes/${elem._id}/${elem.nombre}/${elem.apellidos.paterno}/${elem.apellidos.materno}`} ><Icon> face </Icon></Link> 
+												<br/><Link to={`/EditarUsuario/${elem._id}`} ><Icon> create </Icon></Link> 
+												<br/>
+												<Link to={`/EliminarUsuario/${elem._id}`} ><Icon> delete </Icon></Link>
+											</div>
+										</td>
 
 									</tr>
 									))
@@ -49,12 +53,12 @@ class Usuarios extends Component {
 	render() {
 		return (
 			<div>
-					<div className="row">
+					<div className="row titulo">
 						<h4 className="col s2">
 							Usuarios
 						</h4>
 							<Link to='/AgregarUsuario' >
-							<Button floating large className='red' waves='light' icon='add'/>
+							<Button floating large className='red' waves='light' icon='add' className="light-green accent-3"/>
 							</Link>
 												
 					</div>
