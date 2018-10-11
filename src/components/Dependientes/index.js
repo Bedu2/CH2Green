@@ -1,0 +1,76 @@
+	import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import {Link} from 'react-router-dom';
+import {Table, Icon, Button} from 'react-materialize';
+import * as DependientesActions from '../../actions/DependientesActions.js';
+
+
+class Dependientes extends Component {
+
+	componentDidMount() {
+		this.props.TraerDependientes(this.props.match.params.id);
+		console.log(this.props);
+	}
+
+	desplegarUsuarios = () => (
+		<Table hoverable={true}>
+						<thead>
+							<tr>
+								<th>Nombre</th>
+								<th>Edad P</th>
+								<th>Dependencia M</th>
+							</tr>
+						</thead>
+
+						<tbody>{
+							this.props.dependientes.map((elemento, index) => (	
+								<tr key={elemento._id}>
+									<td>{elemento.nombre_completo}</td>
+									<td>{elemento.edad}</td>
+									<td>{elemento.dependencia}</td>
+									<td>
+										
+										<Link to={`/EditarDependiente/${elemento._usuario}/${elemento._id}`}><Icon> create </Icon></Link> <br/>
+										<Link to={`/EliminarDependiente/${elemento._id}`}><Icon> delete </Icon></Link>
+										
+
+									</td>
+								</tr>
+								))
+						}							
+						</tbody>
+				
+				</Table>
+	);
+
+	render() {
+		return (
+			<div>
+					<div className="row titulo">
+						<h4 className="col s4">
+						{`
+						${this.props.match.params.nombre}					
+						${this.props.match.params.apellidop}					
+						${this.props.match.params.apellidom}					
+						`}
+					</h4>
+							<Link to={`/AgregarDependiente/${this.props.match.params.id}`} >
+								<Button floating large className='red' waves='light' icon='add' className="light-green accent-3"/>
+							</Link>
+												
+					</div>
+					
+					{this.desplegarUsuarios()}
+					
+			</div>
+		);
+	}
+}
+
+
+const mapStateToProps =({ DependientesReducers }) =>{
+	
+	return DependientesReducers;
+}
+
+export default connect(mapStateToProps, DependientesActions)(Dependientes);
