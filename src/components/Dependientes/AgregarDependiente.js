@@ -2,12 +2,11 @@ import React from 'react';
 import { connect } from 'react-redux';
 import {Row, Input, Button, Preloader} from 'react-materialize';
 import * as UsuariosActions from '../../actions/UsuariosActions'
-
 import {
 	 DEPENDENCIAEDITAR_NOMBRE,
 	 DEPENDENCIAEDITAR_DEPENDIENTE,
 	 DEPENDENCIAEDITAR_EDAD
-}from '../../types/UsuariosTypes';
+} from '../../types/UsuariosTypes';
 
 const AgregarDependiente = (props) => {
 	
@@ -52,10 +51,10 @@ const AgregarDependiente = (props) => {
 				     value={props.dependientenombre} name="dependientenombre" onChange={(event) => handleChange(event, DEPENDENCIAEDITAR_NOMBRE)}
 				    />
 				    <Input placeholder="Dependiente" s={6} 
-				     value={props.dependienteedad} name="dependientedependiente" onChange={(event) => handleChange(event, DEPENDENCIAEDITAR_EDAD)}
+				     value={props.dependientedependiente} name="dependientedependiente" onChange={(event) => handleChange(event, DEPENDENCIAEDITAR_DEPENDIENTE)}
 				    />
 				    <Input placeholder="Edad" 
-				     value={props.dependientedependiente} name="dependienteedad" onChange={(event) => handleChange(event, DEPENDENCIAEDITAR_DEPENDIENTE)}
+				     value={props.dependienteedad} name="dependienteedad" onChange={(event) => handleChange(event, DEPENDENCIAEDITAR_EDAD)}
 				    />
 				
 				</Row>
