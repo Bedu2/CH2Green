@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {Redirect} from 'react-router-dom'
-import * as UsuariosActions from '../../actions/UsuariosActions';
+import * as DependientesActions from '../../actions/DependientesActions';
 
 class EliminarDependiente extends Component {
 
@@ -32,9 +32,9 @@ class EliminarDependiente extends Component {
 }
 
 
-const mapStateToProps =({ UsuariosReducers }) =>{
+const mapStateToProps =({ DependientesReducers }) =>{
 	
-	return UsuariosReducers;
+	return DependientesReducers;
 }
 
-export default connect(mapStateToProps, UsuariosActions)(EliminarDependiente);
+export default connect(mapStateToProps, DependientesActions)(EliminarDependiente);

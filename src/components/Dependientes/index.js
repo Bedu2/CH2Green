@@ -1,14 +1,15 @@
-import React, { Component } from 'react';
+	import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {Link} from 'react-router-dom';
 import {Table, Icon, Button} from 'react-materialize';
-import * as UsuariosActions from '../../actions/UsuariosActions';
+import * as DependientesActions from '../../actions/DependientesActions.js';
 
 
 class Dependientes extends Component {
 
 	componentDidMount() {
 		this.props.TraerDependientes(this.props.match.params.id);
+		console.log(this.props);
 	}
 
 	desplegarUsuarios = () => (
@@ -30,10 +31,8 @@ class Dependientes extends Component {
 									<td>
 										
 										<Link to={`/EditarDependiente/${elemento._usuario}/${elemento._id}`}><Icon> create </Icon></Link> <br/>
-											<Link to={`/EliminarDependiente/${elemento._id}`}>
-												<Icon> delete </Icon> <br/>
-											</Link>
-										<Link to={`/EliminarDependiente/${elemento._id}`}><Icon> delete </Icon></Link> <br/>
+										<Link to={`/EliminarDependiente/${elemento._id}`}><Icon> delete </Icon></Link>
+										
 
 									</td>
 								</tr>
@@ -69,9 +68,9 @@ class Dependientes extends Component {
 }
 
 
-const mapStateToProps =({ UsuariosReducers }) =>{
+const mapStateToProps =({ DependientesReducers }) =>{
 	
-	return UsuariosReducers;
+	return DependientesReducers;
 }
 
-export default connect(mapStateToProps, UsuariosActions)(Dependientes);
+export default connect(mapStateToProps, DependientesActions)(Dependientes);

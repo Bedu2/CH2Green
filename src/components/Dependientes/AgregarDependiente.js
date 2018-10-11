@@ -1,12 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import {Row, Input, Button, Preloader} from 'react-materialize';
-import * as UsuariosActions from '../../actions/UsuariosActions'
+import * as DependientesActions from '../../actions/DependientesActions'
 import {
 	 DEPENDENCIAEDITAR_NOMBRE,
 	 DEPENDENCIAEDITAR_DEPENDIENTE,
 	 DEPENDENCIAEDITAR_EDAD
-} from '../../types/UsuariosTypes';
+} from '../../types/DependientesTypes';
 
 const AgregarDependiente = (props) => {
 	
@@ -76,9 +76,9 @@ const AgregarDependiente = (props) => {
 		)
 
 }
-const mapStateToProps = ({ UsuariosReducers }) =>
+const mapStateToProps = ({ DependientesReducers }) =>
 {
-	return UsuariosReducers;
+	return DependientesReducers;
 }
 
-export default connect(mapStateToProps, UsuariosActions)(AgregarDependiente);
+export default connect(mapStateToProps, DependientesActions)(AgregarDependiente);
