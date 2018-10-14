@@ -21,16 +21,17 @@ class App extends Component {
 	        	<div>
 	          		<Header/>
 	        		   <br/>
-                 
-                 <Route exact path ='/' component={Usuarios}/>
-                 <Route exact path ='/AgregarUsuario' component={AgregarUsuario}/>
-                 <Route exact path ='/Usuarios/:id' component={Dependientes}/>
-                 <Route exact path ='/EliminarUsuario/:id' component={Eliminar}/>
-                 <Route exact path ='/EditarUsuario/:id' component={EditarUsuario}/>
-                 <Route exact path ='/Dependientes/:id/:nombre/:apellidop/:apellidom' component={Dependientes}/>
-                 <Route exact path ='/AgregarDependiente/:id' component={AgregarDependiente}/>
-                 <Route exact path = '/EditarDependiente/:idusu/:iddep' component={EditarDependiente}/>
-                 <Route exact path = '/EliminarDependiente/:id' component={EliminarDependiente}/>
+                <div className="container">
+                  <Route exact path ='/' component={Usuarios}/>
+                  <Route exact path ='/AgregarUsuario' component={AgregarUsuario}/>
+                  <Route exact path ='/Usuarios/:id' component={Dependientes}/>
+                  <Route exact path ='/EliminarUsuario/:id' component={Eliminar}/>
+                  <Route exact path ='/EditarUsuario/:id' component={EditarUsuario}/>
+                  <Route exact path ='/Dependientes/:id/:nombre/:apellidop/:apellidom' component={Dependientes}/>
+                  <Route exact path ='/AgregarDependiente/:id' component={AgregarDependiente}/>
+                  <Route exact path = '/EditarDependiente/:idusu/:iddep' component={EditarDependiente}/>
+                  <Route exact path = '/EliminarDependiente/:id' component={EliminarDependiente}/>
+                </div>
 	        	</div>
         		
         	</BrowserRouter>

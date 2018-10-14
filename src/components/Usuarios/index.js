@@ -58,7 +58,7 @@ class Usuarios extends Component {
 							Usuarios
 						</h4>
 							<Link to='/AgregarUsuario' >
-							<Button floating large className='red' waves='light' icon='add' className="light-green accent-3"/>
+							<Button floating large className='red' waves='light' icon='add' className="light-green accent-4"/>
 							</Link>
 												
 					</div>

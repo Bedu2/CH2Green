@@ -32,7 +32,9 @@ class EditarDependiente extends Component {
 							 edad: dependienteedad,
 							 _usuario: this.props.match.params.idusu};	
 			
-			this.props.actualizarDependiente(id, valores, this.props.match.params.idusu)
+			this.props.actualizarDependiente(id, valores, this.props.match.params.idusu);
+			this.props.Direccion(this.props.direccion);
+
 		}
 		else
 			window.Materialize.toast('Validar los campos.', 2 * 1000, 'red');

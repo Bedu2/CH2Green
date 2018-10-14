@@ -20,7 +20,6 @@ export const TraerDependientes = (id) => async(dispatch) =>{
 	try{
 		const response = await axios.get(`https://g2-ch2.herokuapp.com/api/dependientes_usuario/green/${id}`)
 		response.data.reverse();
-		
 		dispatch({type:dEXITO , payload:response.data});
 	}catch(error){
 		dispatch({type:FALLO, payload: error.message})

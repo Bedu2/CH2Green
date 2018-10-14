@@ -9,7 +9,6 @@ class Dependientes extends Component {
 
 	componentDidMount() {
 		this.props.TraerDependientes(this.props.match.params.id);
-		console.log(this.props);
 	}
 
 	desplegarUsuarios = () => (
